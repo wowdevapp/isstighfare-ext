@@ -1,27 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Istigfar</title>
+    <meta charset="UTF-8">
+    <title>The Wonders of Istigfar - عجائب الإستغفار</title>
     <style>
-        body {
-            width: 320px;
-            padding: 24px;
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background: #f8fafc;
-            margin: 0;
+        @import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
+
+        :root {
+            --primary-color: #1e3a8a;
+            --secondary-color: #3b82f6;
+            --accent-color: #15803d;
         }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #f8f9fa;
+            padding: 2rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
 
         .container {
             background: white;
             padding: 20px;
             border-radius: 12px;
             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            width: 300px;
+            margin: 0 auto;
+            text-align: center;
         }
 
         .header {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             margin-bottom: 20px;
         }
@@ -98,19 +112,79 @@
         #statusText.active {
             color: #3b82f6;
         }
+
+        h3 {
+            color: #1e3a8a;
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .benefit {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #f8fafc;
+            border-left: 4px solid #3b82f6;
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        .quran {
+            color: #15803d;
+            font-weight: bold;
+            text-align: center;
+            padding: 1rem;
+            margin: 1rem 0;
+            background: #f0fdf4;
+            border-radius: 8px;
+        }
+
+        .arabic {
+            font-family: 'Traditional Arabic', Arial, sans-serif;
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+            color: #64748b;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
         <div class="header">
-            <h2>Al-Istigfar</h2>
+            <h3>The Wonders of Istigfar</h3>
+        </div>
+        <div>
             <label class="switch">
                 <input type="checkbox" id="toggleExtension">
                 <span class="slider"></span>
             </label>
         </div>
         <div class="status">Status: <span id="statusText">Disabled</span></div>
+
+        <div class="quran">
+            "Ask forgiveness of your Lord. Indeed, He is ever a Perpetual Forgiver. He will send rain from the sky upon
+            you in abundance, and give you increase in wealth and children, and provide for you gardens and provide for
+            you rivers."
+            <div class="arabic">
+                ﴿فَقُلْتُ اسْتَغْفِرُوا رَبَّكُمْ إِنَّهُ كَانَ غَفَّارًا * يُرْسِلِ السَّمَاءَ عَلَيْكُم مِّدْرَارًا *
+                وَيُمْدِدْكُم بِأَمْوَالٍ وَبَنِينَ وَيَجْعَل لَّكُمْ جَنَّاتٍ وَيَجْعَل لَّكُمْ أَنْهَارًا﴾
+            </div>
+        </div>
+
+        <div class="benefit">1. Forgiveness of sins and removal of misdeeds</div>
+        <div class="benefit">2. Brings rainfall and increases blessings</div>
+        <div class="benefit">3. Increases wealth and sustenance</div>
+        <div class="benefit">4. Relieves worries and eases affairs</div>
+        <div class="benefit">5. Entry to Paradise and salvation from Hellfire</div>
+        <div class="benefit">6. Protection from Satan</div>
+        <div class="benefit">7. Brings happiness and tranquility</div>
+        <div class="benefit">8. Remedy for anxiety and sadness</div>
+        <div class="benefit">9. Facilitates marriage</div>
+        <div class="benefit">10. Protects and benefits offspring</div>
+        <div class="benefit">11. Strengthens physical health and wellbeing</div>
+        <div class="benefit">12. Attaining Allah's love</div>
+
     </div>
     <script src="popup.js"></script>
 </body>
