@@ -1,10 +1,38 @@
-// Create alarm when extension is installed
+// Global variable to track extension state
+let isExtensionEnabled = true;
+
+// Initialize extension state when installed
 chrome.runtime.onInstalled.addListener(() => {
-    console.log('Installed');
+    // Set default state
+    chrome.storage.sync.set({ extensionEnabled: true }, () => {
+        isExtensionEnabled = true;
+        createAlarm();
+    });
+});
+
+// Listen for state changes from popup
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    if (request.action === 'toggleExtension') {
+        isExtensionEnabled = request.enabled;
+        if (isExtensionEnabled) {
+            createAlarm();
+        } else {
+            removeAlarm();
+        }
+    }
+});
+
+// Function to create alarm
+function createAlarm() {
     chrome.alarms.create('Isstighfar', {
         periodInMinutes: 1
     });
-});
+}
+
+// Function to remove alarm
+function removeAlarm() {
+    chrome.alarms.clear('Isstighfar');
+}
 
 // Function to inject and show message
 async function showMessage(tabId) {
@@ -30,15 +58,15 @@ async function showMessage(tabId) {
                     const style = document.createElement('style');
                     style.id = 'welcomeStyles';
                     style.textContent = `
-              @keyframes slideIn {
-                from { transform: translateX(100%); opacity: 0; }
-                to { transform: translateX(0); opacity: 1; }
-              }
-              @keyframes fadeOut {
-                from { opacity: 1; }
-                to { opacity: 0; }
-              }
-            `;
+                        @keyframes slideIn {
+                            from { transform: translateX(100%); opacity: 0; }
+                            to { transform: translateX(0); opacity: 1; }
+                        }
+                        @keyframes fadeOut {
+                            from { opacity: 1; }
+                            to { opacity: 0; }
+                        }
+                    `;
                     document.head.appendChild(style);
                 }
 
@@ -54,11 +82,18 @@ async function showMessage(tabId) {
 
 // Listen for alarm and show message in active tab
 chrome.alarms.onAlarm.addListener(async (alarm) => {
-
     if (alarm.name === 'Isstighfar') {
         try {
+            // Check current state
+            const result = await chrome.storage.sync.get(['extensionEnabled']);
+            isExtensionEnabled = result.extensionEnabled ?? true;
+
+            if (!isExtensionEnabled) {
+                return; // Don't show message if extension is disabled
+            }
+
             // Get active tab
-            const [tab] = await chrome.tabs.query({ active: true })
+            const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
 
             if (tab && tab.id) {
                 await showMessage(tab.id);

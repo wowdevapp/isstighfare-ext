@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "IsstighfarBETA",
     "version": "1.0",
-    "description": "THIS EXTENSION IS FOR BETA TESTING هو امتداد مبتكر صُمّم ليُساعِدَك على المداومة على ذكر الله، وخاصة الاستغفار. يُتيح لك هذا الامتداد تذكيرات لطيفة تظهر بشكل دوري أثناء استخدامك لجهازك، تحفّزك على قول  أو أذكار أخرى تُعيد لك الطمأنينة والسكينة.",
+    "description": "THIS EXTENSION IS FOR BETA TESTING A gentle reminder to recite Istigfar throughout your day",
     "icons": {
         "16": "images/logo16.png",
         "32": "images/logo32.png",
@@ -22,7 +22,8 @@
         "activeTab",
         "scripting",
         "alarms",
-        "tabs"
+        "tabs",
+        "storage"
     ],
     "host_permissions": [
         "<all_urls>"
